@@ -22,6 +22,11 @@ namespace blogcore.Migrations
                 {
                     table.PrimaryKey("PK_Articles", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Articles",
+                columns: new[] { "Id", "Date", "Text", "Title" },
+                values: new object[] { 1, new DateTime(2020, 3, 24, 15, 4, 55, 666, DateTimeKind.Local).AddTicks(5760), "Content", "Title1" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

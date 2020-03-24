@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using blogcore.Data;
+using blogcore.Data.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace blogcore
@@ -17,6 +20,9 @@ namespace blogcore
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<DataContext>();
+
+			services.AddScoped<ArtilclesDAO>();
+			services.AddMvc();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -26,14 +32,15 @@ namespace blogcore
 			{
 				app.UseDeveloperExceptionPage();
 			}
-			app.UseDefaultFiles();
+			//			app.UseFileServer();
 			app.UseStaticFiles();
-/*
-			app.Run(async (context) =>
+			app.UseMvc(routes =>
 			{
-				await context.Response.WriteAsync("Hello World!");
+				routes.MapRoute(
+		name: "default",
+		template: "{controller=Articles}/{action=index}/{id?}");
 			});
-*/
+
 		}
 	}
 }

@@ -34,6 +34,15 @@ namespace blogcore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Articles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2020, 3, 24, 15, 4, 55, 666, DateTimeKind.Local).AddTicks(5760),
+                            Text = "Content",
+                            Title = "Title1"
+                        });
                 });
 #pragma warning restore 612, 618
         }
