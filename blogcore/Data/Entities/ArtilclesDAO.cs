@@ -17,6 +17,13 @@ namespace blogcore.Data.Entities
 			IEnumerable<Article> res = dbcontext.Articles.Where(e => e.Id != 0).ToList();
 				return res;
 		}
+
+		public override Article getLast()
+		{
+			DateTime maxdate = dbcontext.Articles.Max(e => e.Date);
+			Article res = dbcontext.Articles.Where(a => a.Date == maxdate).FirstOrDefault();
+			return res;
 		}
+	}
 }
 

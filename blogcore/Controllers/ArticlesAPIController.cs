@@ -20,5 +20,11 @@ namespace blogcore.Controllers
 			IEnumerable<Article> res = dao.getAll();
 			return Json(res);
 		}
+
+		public IActionResult getCurrentArticle()
+		{
+			Article article = dao.getLast();
+			return Json(article);
+		}
 	}
 }

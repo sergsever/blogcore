@@ -12,6 +12,7 @@ namespace blogcore.Data
 		void Add(TEntity entity);
 		void Delete(TEntity entity);
 		void Update(TEntity entity);
+		TEntity getLast();
 
 	}
 }

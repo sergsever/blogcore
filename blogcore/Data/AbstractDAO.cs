@@ -38,5 +38,7 @@ namespace blogcore.Data
 		{
 			throw new NotImplementedException();
 		}
+
+		public abstract TEntity getLast();
 	}
 }
