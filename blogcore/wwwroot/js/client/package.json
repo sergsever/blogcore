@@ -21,5 +21,8 @@
       "@babel/env",
       "@babel/react"
     ]
+  },
+  "dependencies": {
+    "react-native": "^0.61.5"
   }
 }
